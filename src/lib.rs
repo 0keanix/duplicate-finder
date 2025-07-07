@@ -43,13 +43,13 @@ use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use tokio::fs;
 
-// Публичные модули - доступны для внешнего использования
+// Public modules - available for external usage
 pub mod scanner;
 pub mod output;
 
-// Re-export основных типов для удобства использования библиотеки
-pub use scanner::FileScanner;
 pub use output::OutputFormatter;
+// Re-export of main types for convenient library usage
+pub use scanner::FileScanner;
 
 /// CLI interface - structure for parsing command line arguments
 ///
@@ -96,7 +96,7 @@ pub struct Cli {
     #[arg(help = "Exclude empty files")]
     pub exclude_empty: bool,
 
-    /// Output format: text or json
+    /// Output format: text or JSON
     #[arg(short, long, default_value = "text")]
     #[arg(help = "Output format")]
     pub output_format: OutputFormat,
@@ -233,7 +233,7 @@ pub enum DuplicateFinderError {
     #[error("I/O error: {0}")]
     Io(#[from] std::io::Error),
 
-    /// Permission denied for specific path
+    /// Permission denied for a specific path
     #[error("Permission denied for path: {path}")]
     PermissionDenied { path: PathBuf },
 
@@ -271,7 +271,7 @@ impl FileInfo {
     /// # Returns
     ///
     /// * `Ok(FileInfo)` - Successfully processed file
-    /// * `Err(DuplicateFinderError)` - Error accessing file or calculating hash
+    /// * `Err(DuplicateFinderError)` - Error accessing a file or calculating hash
     ///
     /// # Examples
     ///
@@ -337,7 +337,7 @@ impl FileInfo {
         loop {
             let bytes_read = file.read(&mut buffer).await?;
             if bytes_read == 0 {
-                break; // End of file reached
+                break; // End of a file reached
             }
             hasher.update(&buffer[..bytes_read]);
         }

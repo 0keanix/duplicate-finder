@@ -4,12 +4,12 @@ use std::sync::Arc;
 use std::time::Instant;
 
 use anyhow::Result;
-use tokio::sync::Semaphore;
-use tokio::fs;
-use tracing::{debug, info, warn, error};
 use indicatif::{ProgressBar, ProgressStyle};
+use tokio::fs;
+use tokio::sync::Semaphore;
+use tracing::{debug, error, info, warn};
 
-use crate::{Cli, FileInfo, DuplicateGroup, ScanResult, DuplicateFinderError};
+use crate::{Cli, DuplicateFinderError, DuplicateGroup, FileInfo, ScanResult};
 
 /// Main file scanner
 ///

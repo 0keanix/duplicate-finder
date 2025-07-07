@@ -6,7 +6,7 @@
 
 use anyhow::Result;
 use clap::Parser;
-use tracing::{info, error};
+use tracing::{error, info};
 
 // Use our library
 use duplicate_finder::{Cli, FileScanner, OutputFormatter};
@@ -44,7 +44,7 @@ async fn main() -> Result<()> {
     info!("🚀 Starting Duplicate Finder v{}", env!("CARGO_PKG_VERSION"));
     info!("📁 Target directory: {}", cli.directory.display());
 
-    // Display a welcome message to user
+    // Display a welcome message to the user
     display_welcome_banner(&cli);
 
     // Create and configure the file scanner

@@ -55,7 +55,7 @@ OPTIONS:
   -j, --threads <THREADS>        Number of processing threads (0 for auto-detect) [default: 0]
   -v, --verbose                  Verbose output
   -L, --follow-symlinks          Follow symbolic links (can cause infinite loops!)
-  -d, --max-depth <MAX_DEPTH>    Maximum directory depth (0 for unlimited) [default: 0]
+  -D, --max-depth <MAX_DEPTH>    Maximum directory depth (0 for unlimited) [default: 0]
   -h, --help                     Print help
   -V, --version                  Print version
 ```

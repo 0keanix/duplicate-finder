@@ -1,11 +1,11 @@
 use std::path::Path;
 
 use anyhow::Result;
-use tokio::fs;
-use serde_json;
 use chrono::{DateTime, Local};
+use serde_json;
+use tokio::fs;
 
-use crate::{Cli, ScanResult, DuplicateGroup, OutputFormat};
+use crate::{Cli, DuplicateGroup, OutputFormat, ScanResult};
 
 /// Output formatter for scan results
 ///
