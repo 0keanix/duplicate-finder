@@ -1,0 +1,54 @@
+[package]
+name = "duplicate-finder"
+version = "0.1.0"
+edition = "2024"
+authors = ["Ilia Denisov <iodenisof@gmail.com>"]
+description = "A fast and reliable duplicate file finder"
+license = "MIT"
+repository = "https://github.com/0keanix/duplicate-finder#"
+
+[dependencies]
+# CLI parsing - modern and powerful argument parser
+clap = { version = "4.4", features = ["derive"] }
+
+# File hashing - fast and reliable hash functions
+sha2 = "0.10"
+
+# Asynchronous filesystem operations
+tokio = { version = "1.0", features = ["full"] }
+tokio-stream = { version = "0.1", features = ["fs"] }
+
+# For determining the number of CPU cores
+num_cpus = "1.16"
+
+# Error handling - makes error handling ergonomic
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Logging and debugging
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# Progress bars for UX
+indicatif = "0.17"
+
+# Serialization for possible result export
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+[dev-dependencies]
+# Testing
+tempfile = "3.8"
+criterion = { version = "0.5", features = ["html_reports"] }
+futures = "0.3"
+
+# Дополнительные алгоритмы хеширования для бенчмарков
+sha1 = "0.10"
+blake3 = "1.5"
+
+[[bench]]
+name = "file_hashing"
+harness = false
