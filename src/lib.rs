@@ -66,9 +66,9 @@ using SHA-256 hashing. It supports various filtering options and output formats
 to help you clean up your file system efficiently.
 
 Examples:
-  duplicate-finder /home/user/Documents
+  duplicate-finder -d /home/user/Documents
   duplicate-finder -s 1024 -e --output-format json
-  duplicate-finder -o results.json /path/to/scan
+  duplicate-finder -o json -O /path/to/output.json
 ")]
 pub struct Cli {
     /// Directory to scan for duplicates (defaults to current directory)
