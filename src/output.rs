@@ -100,11 +100,11 @@ impl<'a> OutputFormatter<'a> {
 
         output.push_str(&format!("📋 Group #{} ({})\n", group_number, format_bytes(group.size)));
         output.push_str(&format!("   💰 Wasted space: {}\n", format_bytes(group.wasted_space)));
-        output.push_str(&format!("   🔐 Hash: {}...\n", &group.hash[..16])); // Показываем первые 16 символов хеша
+        output.push_str(&format!("   🔐 Hash: {}...\n", &group.hash[..16])); // Show the first 16 characters of hash
         output.push_str(&format!("   📊 {} duplicate files:\n", group.files.len()));
 
         for (file_index, file) in group.files.iter().enumerate() {
-            let file_marker = if file_index == 0 { "📌" } else { "🔄" }; // Первый файл - оригинал
+            let file_marker = if file_index == 0 { "📌" } else { "🔄" }; // The first file is considered original
             let modified_time = format_system_time(file.modified);
 
             output.push_str(&format!("     {} {}\n", file_marker, file.path.display()));
@@ -155,7 +155,7 @@ impl<'a> OutputFormatter<'a> {
         if !file_extensions.is_empty() {
             recommendations.push('\n');
             recommendations.push_str("📈 File Types Analysis:\n");
-            for (extension, count) in file_extensions.iter().take(5) { // Топ 5 расширений
+            for (extension, count) in file_extensions.iter().take(5) { // Top 5 file extensions
                 recommendations.push_str(&format!("   {} files: {}\n", extension, count));
             }
         }
@@ -182,7 +182,7 @@ impl<'a> OutputFormatter<'a> {
         }
 
         let mut extensions: Vec<(String, usize)> = extension_counts.into_iter().collect();
-        extensions.sort_by(|a, b| b.1.cmp(&a.1)); // Сортируем по количеству (убывание)
+        extensions.sort_by(|a, b| b.1.cmp(&a.1)); // Sort by count (descending)
 
         extensions
     }

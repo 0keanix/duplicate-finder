@@ -30,9 +30,9 @@ pub struct FileScanner {
 impl FileScanner {
     /// Creates a new scanner instance
     pub fn new(config: Cli) -> Self {
-        // Определяем количество потоков
+        // Determine thread count
         let thread_count = if config.threads == 0 {
-            num_cpus::get() * 2 // По умолчанию: количество ядер * 2
+            num_cpus::get() * 2 // Default: number of CPU cores * 2
         } else {
             config.threads
         };
@@ -102,7 +102,7 @@ impl FileScanner {
                 .map(|g| g.wasted_space)
                 .sum(),
             duplicate_groups: duplicate_groups.into_iter()
-                .filter(|g| g.files.len() > 1) // Только реальные дубликаты
+                .filter(|g| g.files.len() > 1) // Only real duplicates
                 .collect(),
             scan_duration,
             scanned_directory: self.config.directory.clone(),
@@ -335,7 +335,7 @@ impl FileScanner {
             for task in tasks.drain(..) {
                 match task.await {
                     Ok(Some(file_info)) => file_infos.push(file_info),
-                    Ok(None) => {} // Файл не удалось обработать, пропускаем
+                    Ok(None) => {} // File processing failed, skipping
                     Err(e) => error!("Task panicked: {}", e),
                 }
             }
@@ -358,7 +358,7 @@ impl FileScanner {
         // Convert to DuplicateGroup
         groups.into_iter()
             .map(|(hash, mut files)| {
-                // Сортируем файлы по времени модификации (самые старые первыми)
+                // Sort files by modification time (oldest first)
                 files.sort_by_key(|f| f.modified);
 
                 let size = files.first().map(|f| f.size).unwrap_or(0);

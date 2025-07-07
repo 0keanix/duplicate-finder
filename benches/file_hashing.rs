@@ -9,7 +9,7 @@ use duplicate_finder::FileInfo;
 async fn create_test_file(size: usize) -> NamedTempFile {
     let temp_file = NamedTempFile::new().expect("Failed to create temp file");
 
-    // Заполняем файл данными
+    // Fill the file with data
     let data = vec![0u8; size];
     let mut async_file = tokio::fs::File::create(temp_file.path()).await
         .expect("Failed to create async file");
@@ -143,7 +143,7 @@ fn bench_parallel_hashing(c: &mut Criterion) {
     let rt = tokio::runtime::Runtime::new().unwrap();
 
     let file_counts = vec![1, 2, 4, 8, 16, 32];
-    let file_size = 100 * 1024; // 100 KB на файл
+    let file_size = 100 * 1024; // 100 KB per file
 
     let mut group = c.benchmark_group("parallel_hashing");
 
