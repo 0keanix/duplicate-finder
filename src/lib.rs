@@ -122,7 +122,7 @@ pub struct Cli {
     pub follow_symlinks: bool,
 
     /// Maximum depth for directory recursion (0 = unlimited)
-    #[arg(short = 'd', long, default_value = "0")]
+    #[arg(short = 'D', long, default_value = "0")]
     #[arg(help = "Maximum directory depth (0 for unlimited)")]
     pub max_depth: usize,
 }
