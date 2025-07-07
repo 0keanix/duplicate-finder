@@ -32,7 +32,7 @@ cargo install --path .
 duplicate-finder
 
 # Scan a specific directory
-duplicate-finder /path/to/scan
+duplicate-finder -d /path/to/scan
 
 # Skip small files and export results to JSON
 duplicate-finder -s 10240 --output-format json
