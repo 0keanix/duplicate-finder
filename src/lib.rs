@@ -102,7 +102,7 @@ pub struct Cli {
     pub output_format: OutputFormat,
 
     /// Save results to a file instead of printing to stdout
-    #[arg(short = 'o', long)]
+    #[arg(short = 'O', long)]
     #[arg(help = "Output file path")]
     pub output_file: Option<PathBuf>,
 

@@ -38,7 +38,7 @@ duplicate-finder -d /path/to/scan
 duplicate-finder -s 10240 --output-format json
 
 # Save results to a file
-duplicate-finder -o results.json /path/to/scan
+duplicate-finder -o json -O /path/to/output/file
 ```
 
 ### Command-line Options
@@ -51,7 +51,7 @@ OPTIONS:
   -H, --include-hidden           Include hidden files and directories
   -e, --exclude-empty            Exclude empty files
   -o, --output-format <FORMAT>   Output format: text or json [default: text]
-  -o, --output-file <FILE>       Output file path
+  -O, --output-file <FILE>       Output file path
   -j, --threads <THREADS>        Number of processing threads (0 for auto-detect) [default: 0]
   -v, --verbose                  Verbose output
   -L, --follow-symlinks          Follow symbolic links (can cause infinite loops!)
