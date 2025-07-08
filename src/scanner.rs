@@ -147,9 +147,9 @@ impl FileScanner {
         self.progress_bar = Some(pb);
     }
 
-    /// Recursive file discovery in a directory
+    /// Iterative recursion file discovery in a directory
     ///
-    /// Uses an iterative approach instead of recursion to avoid
+    /// Uses an iterative approach instead of pure recursion to avoid
     /// async recursion issues and better stack usage control
     async fn discover_files(&self) -> Result<Vec<PathBuf>> {
         let mut file_paths = Vec::new();
